@@ -16,8 +16,8 @@ function getById(id) {
     .first();
 }
 
-function insert(car) {
+function insert(newCar) {
   return db("cars")
-    .insert(car)
+    .insert(newCar)
     .then(([id]) => getById(id));
 }
