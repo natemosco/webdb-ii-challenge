@@ -28,20 +28,11 @@ router.get("/:id", (req, res) => {
 });
 router.post("/", (req, res) => {
   const newCar = req.body;
-  if (
-    !newCar.VIN ||
-    !newCar.make ||
-    !newCar.model ||
-    !newCar.mileage ||
-    !newCar.transmission ||
-    !newCar.title_status
-  ) {
-    res
-      .status(404)
-      .json({
-        errorMessage:
-          "new car data requires all of the following: VIN, make, model, mileage, transmission, title_status. Current data incomplete."
-      });
+  if (!newCar.VIN || !newCar.make || !newCar.model || !newCar.mileage) {
+    res.status(404).json({
+      errorMessage:
+        "new car data requires all of the following: VIN, make, model and mileage. Current data incomplete."
+    });
   } else {
     insert(newCar)
       .then(postedCar => {
@@ -51,11 +42,9 @@ router.post("/", (req, res) => {
       })
       .catch(error => {
         console.log(error, "Error from post /");
-        res
-          .status(500)
-          .json({
-            errorMessage: "internal error creating new post please try again "
-          });
+        res.status(500).json({
+          errorMessage: "internal error creating new post please try again "
+        });
       });
   }
 });
