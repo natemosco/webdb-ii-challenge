@@ -5,13 +5,13 @@ module.exports = {
     client: "sqlite3",
     useNullAsDefault: true,
     connection: {
-      filename: ""
+      filename: "./cars.db3"
     },
     migrations: {
-      directory: "./migrations/20191212031429_carTable.js"
+      directory: "./migrations"
     },
     seeds: {
-      directory: "./seeds/carsSeedData.js"
+      directory: "./seeds"
     }
   }
 
